@@ -10,6 +10,7 @@ import android.hardware.camera2.params.Face;
 import android.os.Binder;
 import android.os.Environment;
 import android.os.IBinder;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -105,6 +106,7 @@ public class SensingFunction extends Service
     public void onCreate()
     {
         super.onCreate();
+        Log.d("SensingFunction","sensor create");
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         mSensorManager.registerListener( this, mSensorManager.getDefaultSensor( Sensor.TYPE_ACCELEROMETER ),1000);
 
@@ -210,12 +212,12 @@ public class SensingFunction extends Service
         return START_STICKY;
     }
 
-    @Override
+    /*@Override
     public void onDestroy()
     {
         mSensorManager.unregisterListener(this);
         super.onDestroy();
-    }
+    }*/
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy){ }

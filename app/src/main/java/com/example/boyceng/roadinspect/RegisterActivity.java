@@ -15,7 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class RegisterActivity extends Activity {
+public class RegisterActivity extends BaseActivity {
 
 	private EditText user;
 	private EditText pwd;

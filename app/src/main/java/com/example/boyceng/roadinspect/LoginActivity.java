@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends BaseActivity {
 
 	private EditText user;
 	private EditText pwd;
@@ -72,7 +72,8 @@ public class LoginActivity extends Activity {
 		pass = pwd.getText().toString().trim();
         boolean ret = false;
 		if(username.equals("")||pass.equals("")){
-			Toast.makeText(getApplicationContext(),getString(R.string.remain_empty),Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(),
+					getString(R.string.remain_empty),Toast.LENGTH_SHORT).show();
 			ret = false;
 		}else{
 			ret = true;

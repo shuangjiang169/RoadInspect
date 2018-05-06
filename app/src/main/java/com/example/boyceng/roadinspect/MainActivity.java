@@ -14,12 +14,14 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.content.BroadcastReceiver;
+import android.widget.Toast;
 
 import com.example.boyceng.roadinspect.R;
 
@@ -29,10 +31,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
 {
     Button bn;
-    //TextView et;
     float X,Y,Z;
     boolean is_on;
     public static final String ACTION_UPDATEUI = "action.updateUI";
@@ -40,8 +41,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState);//实现布局
+        Log.d("MainActivity"," oncreate");
+        setContentView(R.layout.activity_main); //初始化布局
         bn = (Button)findViewById(R.id.power);
         //et = (TextView)findViewById(R.id.view);
         is_on=false;
@@ -164,10 +166,10 @@ public class MainActivity extends AppCompatActivity
 
             fos.write(info.getBytes());
             fos.close();
-            //System.out.println("train.svm.model 写入成功!!!");
-            //et.setText("train.svm.model 写入成功!!!");
+          Log.d("MainActivity"," train.svm.model 写入成功!!!");
+
         } catch (Exception e) {
-            //System.out.println("Error in create!!!");
+             Log.d("MainActivity","Error in create!!!");
             e.printStackTrace();
         }
 
@@ -179,7 +181,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                //System.out.println("Click on !!!");
+               Log.d("MainActivity","Click on !!!");
                 if(!is_on)
                 {
                     is_on = true;
@@ -228,10 +230,10 @@ public class MainActivity extends AppCompatActivity
                     FileOutputStream fos = new FileOutputStream(file, false);
                     fos.write(outcome.getBytes());
                     fos.close();
-                    //System.out.println("test.svm写入成功!!!");
+                     Log.d("MainActivity","test.svm写入成功!!!");
                     //et.append("test.svm写入成功!!!");
                 } catch (Exception e) {
-                    //System.out.println("test.svm未写入!!!");
+                     Log.d("MainActivity","test.svm未写入!!!");
                     e.printStackTrace();
                 }
                 //=========================================end=====================================================
@@ -241,10 +243,10 @@ public class MainActivity extends AppCompatActivity
                 String[] testArgs = {path+"/"+predict, path+"/"+svmmodelname, path+"/"+save};
                 try {
                     prediction.main(testArgs);
-                    //System.out.println("Predicted!!!");
+                    Log.d("MainActivity","Predicted!!!");
                     //et.append("Predicted!!!");
                 } catch (IOException e) {
-                    //System.out.println("Predict Error!!!");
+                    Log.d("MainActivity","Predict Error!!!");
                     //et.append("Predict Error!!!");
                     e.printStackTrace();
                 }
@@ -260,7 +262,7 @@ public class MainActivity extends AppCompatActivity
                     sb.append(new String(buff));
                     flag = Float.parseFloat(sb.toString());
                     is.close();
-                    //System.out.println("读取成功："+sb.toString()+"\n"+flag+"\n");
+                     Log.d("MainActivity","读取成功："+sb.toString()+"\n"+flag+"\n");
                     //et.append("读取成功："+sb.toString()+"\n"+flag+"\n");
                 } catch (Exception e) {
                     //System.out.println("Error");
@@ -272,12 +274,16 @@ public class MainActivity extends AppCompatActivity
                     //et.append("dump\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
                     Back.setBackgroundResource(R.color.red);
+                    Toast.makeText(getApplicationContext(),
+                            getString(R.string.dump),Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
                     //et.append("flat\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
                     Back.setBackgroundResource(R.color.green);
+                    Toast.makeText(getApplicationContext(),
+                            getString(R.string.flat),Toast.LENGTH_SHORT).show();
                 }
 
                 File file1 = new File(path, save);
@@ -296,7 +302,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    protected  void onDestroy()
+  /*  protected  void onDestroy()
     {
         super.onDestroy();
         unregisterReceiver(broadcastReceiver);
@@ -305,5 +311,5 @@ public class MainActivity extends AppCompatActivity
         {
             file.delete();
         }
-    }
+    }*/
 }
