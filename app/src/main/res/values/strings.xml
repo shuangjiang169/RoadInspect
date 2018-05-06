@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">RoadInspect</string>
+    <string name="remain_empty">请将账号密码填写完整！</string>
+    <string name="remain_error">请将账号密码填写正确！</string>
+    <string name="remain_register_succ">注册成功！</string>
+    <string name="cancel">取消</string>
+    <string name="ok">确定</string>
 </resources>
