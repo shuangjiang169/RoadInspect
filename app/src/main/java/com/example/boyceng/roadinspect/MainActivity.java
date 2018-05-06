@@ -1,42 +1,24 @@
 package com.example.boyceng.roadinspect;
 
-import android.app.Service;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Environment;
-import android.os.IBinder;
-import android.support.v4.view.GravityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.content.BroadcastReceiver;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
-
-import com.example.boyceng.roadinspect.R;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Field;
-
-
 
 
 public class MainActivity extends BaseActivity
@@ -56,9 +38,17 @@ public class MainActivity extends BaseActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.backup:
-                Toast.makeText(this, "You clicked Backup", Toast.LENGTH_SHORT).show();
-                break;
+            case R.id.instruction:
+                //改这两行  它可以反映点击事件
+              //  Toast.makeText(this, "You clicked Backup", Toast.LENGTH_SHORT).show();
+               // break;
+            {
+                Intent intent = new Intent();
+                intent.putExtra("testIntent", "123");
+                intent.setClass(MainActivity.this, OtherActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+             break;
             case R.id.delete:
                 Toast.makeText(this, "You clicked Delete", Toast.LENGTH_SHORT).show();
                 break;
@@ -81,6 +71,8 @@ public class MainActivity extends BaseActivity
         bn = (Button)findViewById(R.id.power);
         //et = (TextView)findViewById(R.id.view);
         is_on=false;
+
+
 
 
 
