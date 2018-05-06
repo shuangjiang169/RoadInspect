@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/background"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#000000"
-    tools:context="com.example.boyceng.roadinspector.MainActivity">
 
-    <!--
-    <TextView
-        android:id="@+id/view"
+
+
+
+
+   <RelativeLayout
+
+          xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:id="@+id/background"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="#000000"
+      tools:context="com.example.boyceng.roadinspector.MainActivity">
+
+    //toolbar显示
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        />
-        -->
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+
 
     <Button
         android:id="@+id/power"
@@ -28,4 +36,5 @@
         android:text="  开始测试  "
         android:textSize="25dp" />
 
-</RelativeLayout>
+   </RelativeLayout>
+

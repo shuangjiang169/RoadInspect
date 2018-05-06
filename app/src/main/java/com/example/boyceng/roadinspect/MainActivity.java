@@ -12,16 +12,21 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Environment;
 import android.os.IBinder;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.content.BroadcastReceiver;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.example.boyceng.roadinspect.R;
 
@@ -29,6 +34,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
+
+
 
 
 public class MainActivity extends BaseActivity
@@ -39,14 +47,44 @@ public class MainActivity extends BaseActivity
     public static final String ACTION_UPDATEUI = "action.updateUI";
     UpdateUIBroadcastReceiver broadcastReceiver;
 
+    //以下是调用toolbar
+    public boolean onCreateOptionsMenu (Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.backup:
+                Toast.makeText(this, "You clicked Backup", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.delete:
+                Toast.makeText(this, "You clicked Delete", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.settings:
+                Toast.makeText(this, "You clicked Settings", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+        }
+        return true;
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);//实现布局
         Log.d("MainActivity"," oncreate");
         setContentView(R.layout.activity_main); //初始化布局
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         bn = (Button)findViewById(R.id.power);
         //et = (TextView)findViewById(R.id.view);
         is_on=false;
+
+
+
+
 
         try{
             File file = new File(Environment.getExternalStorageDirectory(), "train.svm.model");
@@ -206,6 +244,7 @@ public class MainActivity extends BaseActivity
             }
         });
     }
+
 
     private class UpdateUIBroadcastReceiver extends BroadcastReceiver {
         @Override
