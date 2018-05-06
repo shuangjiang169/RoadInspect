@@ -22,10 +22,10 @@
         android:id="@+id/power"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:text="  Power  "
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        />
+        android:layout_centerVertical="true"
+        android:background="@drawable/button_style"
+        android:text="  开始测试  "
+        android:textSize="25dp" />
 
 </RelativeLayout>
