@@ -1,19 +1,21 @@
 package com.example.boyceng.roadinspect;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Environment;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.content.BroadcastReceiver;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,9 +43,7 @@ public class MainActivity extends BaseActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.instruction:
-                //改这两行  它可以反映点击事件
-              //  Toast.makeText(this, "You clicked Backup", Toast.LENGTH_SHORT).show();
-               // break;
+                //toolbar上的三个按钮的intent 跳转到其他activity
             {
                 Intent intent = new Intent();
                 intent.putExtra("testIntent", "123");
@@ -82,6 +82,21 @@ public class MainActivity extends BaseActivity
         //et = (TextView)findViewById(R.id.view);
         is_on=false;
 
+//以下是实现悬浮按钮 √
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Data deleted", Snackbar.LENGTH_SHORT)  //第一个显示内容，第二个显示时间
+                        .setAction("Undo", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(MainActivity.this, "Data restored", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .show();
+            }
+        });
 
 
 

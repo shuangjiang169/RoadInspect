@@ -48,9 +48,9 @@
         <activity android:name=".InstructionActivity" />
         <activity android:name=".FeedbackActivity" />
 
-        <service android:name=".SensingFunction"></service>
+        <service android:name=".SensingFunction" />
 
-        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".HelpActivity" />
     </application>
 
 </manifest>
