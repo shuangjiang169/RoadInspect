@@ -21,6 +21,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
+
+
 public class MainActivity extends BaseActivity
 {
     Button bn;
@@ -45,7 +47,7 @@ public class MainActivity extends BaseActivity
             {
                 Intent intent = new Intent();
                 intent.putExtra("testIntent", "123");
-                intent.setClass(MainActivity.this, OtherActivity.class);
+                intent.setClass(MainActivity.this, InstructionActivity.class);
                 MainActivity.this.startActivity(intent);
             }
              break;

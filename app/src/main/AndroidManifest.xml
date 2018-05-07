@@ -43,7 +43,7 @@
        <activity android:name=".MainActivity" />
         android:label="Test"
        <activity android:name=".RegisterActivity" />
-        <activity android:name=".OtherActivity"/>
+        <activity android:name=".InstructionActivity"/>
 
         <service android:name=".SensingFunction">
         </service>
