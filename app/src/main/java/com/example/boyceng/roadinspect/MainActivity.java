@@ -54,8 +54,8 @@ public class MainActivity extends BaseActivity
             case R.id.advise:
             {
                 Intent intent = new Intent();
-                intent.putExtra("testIntent", "123");
-                intent.setClass(MainActivity.this, Advise.class);
+              //  intent.putExtra("testIntent", "123");
+                intent.setClass(MainActivity.this, FeedbackActivity.class);
                 MainActivity.this.startActivity(intent);
             }
             case R.id.settings:
