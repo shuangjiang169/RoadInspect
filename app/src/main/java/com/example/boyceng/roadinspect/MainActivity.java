@@ -51,9 +51,13 @@ public class MainActivity extends BaseActivity
                 MainActivity.this.startActivity(intent);
             }
              break;
-            case R.id.delete:
-                Toast.makeText(this, "You clicked Delete", Toast.LENGTH_SHORT).show();
-                break;
+            case R.id.advise:
+            {
+                Intent intent = new Intent();
+                intent.putExtra("testIntent", "123");
+                intent.setClass(MainActivity.this, Advise.class);
+                MainActivity.this.startActivity(intent);
+            }
             case R.id.settings:
                 Toast.makeText(this, "You clicked Settings", Toast.LENGTH_SHORT).show();
                 break;

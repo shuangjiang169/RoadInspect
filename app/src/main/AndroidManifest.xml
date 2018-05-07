@@ -44,6 +44,7 @@
         android:label="Test"
        <activity android:name=".RegisterActivity" />
         <activity android:name=".InstructionActivity"/>
+        <activity android:name=".Advise" />
 
         <service android:name=".SensingFunction">
         </service>
