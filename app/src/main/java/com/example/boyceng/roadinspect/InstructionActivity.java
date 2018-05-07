@@ -9,13 +9,11 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
 public class InstructionActivity extends BaseActivity {
 
 	public static final String FRUIT_NAME = "fruit_name";
 
-	public static final String FRUIT_IMAGE_ID = "fruit_image_id";
+	//public static final String FRUIT_IMAGE_ID = "fruit_image_id";
 			//
 
 	@Override
@@ -25,7 +23,7 @@ public class InstructionActivity extends BaseActivity {
 		Intent intent = getIntent();
 		//这两行修改了 fruitName里修改标题
 		String fruitName = "说明书";
-		int fruitImageId = intent.getIntExtra(FRUIT_IMAGE_ID, 0);
+		//int fruitImageId = intent.getIntExtra(FRUIT_IMAGE_ID, 0);
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 		ImageView fruitImageView = (ImageView) findViewById(R.id.fruit_image_view);
@@ -36,7 +34,7 @@ public class InstructionActivity extends BaseActivity {
 			actionBar.setDisplayHomeAsUpEnabled(true);
 		}
 		collapsingToolbar.setTitle(fruitName);
-		Glide.with(this).load(fruitImageId).into(fruitImageView);
+	//	Glide.with(this).load(fruitImageId).into(fruitImageView);
 		//String fruitContent = generateFruitContent(fruitName);
 		//fruitContentText.setText(fruitContent);
 	}
