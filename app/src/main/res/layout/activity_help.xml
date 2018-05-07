@@ -1,6 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- 该文件是InstructionActivity.java文件所使用的布局文件 -->
-
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -51,6 +48,21 @@
             android:layout_height="wrap_content">
 
             <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="35dp"
+            app:cardCornerRadius="4dp">
+            <TextView android:text="Q1:如何操作这款软件？
+A:按下“开始测试”按钮，开始收集颠簸数据。我们利用svm算法，当背景色出现红色，说明道路处在颠簸状态；当背景色出现绿色时，说明道路处在平稳状态。"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="18sp"/>
+        </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -58,50 +70,29 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="35dp"
                 app:cardCornerRadius="4dp">
-
-                <TextView
-                    android:id="@+id/fruit_content_text"
+                <TextView android:text="Q2:是用什么传感器检测？
+A:我们使用的是手机内置的加速的传感器。"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="您可以在这里反馈道路的破损情况（列出具体地点，或经纬度等），也可以写下您对本软件的建议。我们会继续改进。谢谢！(*╹▽╹*)"
-                    android:textSize="20sp"/>
+                    android:textSize="18sp"/>
             </android.support.v7.widget.CardView>
-
-            //添加edittext
-
-            <LinearLayout
-                android:focusable="true" android:focusableInTouchMode="true"
-                android:layout_width="0px" android:layout_height="0px"/>
-            <EditText android:text=""
-                android:id="@+id/help_feedback"
-                android:lines="5"
-                android:gravity="top"
-                android:hint="请输入您的反馈意见(字数500以内)！"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></EditText>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_height="wrap_content">
-
-                <Button
-                    android:id="@+id/btn_register"
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="35dp"
+                app:cardCornerRadius="4dp">
+                <TextView android:text=" Q3:如何和你们取得联系？
+A:请联系我们：183xxxxxxx"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="20dp"
-                    android:text="提交"
-                    android:textColor="#000000"
-                    android:textSize="19sp" />
-            </LinearLayout>
-
-
-
-    </LinearLayout>
+                    android:layout_margin="10dp"
+                    android:textSize="18sp"/>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton

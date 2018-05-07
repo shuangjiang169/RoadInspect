@@ -54,12 +54,16 @@ public class MainActivity extends BaseActivity
             case R.id.advise:
             {
                 Intent intent = new Intent();
-              //  intent.putExtra("testIntent", "123");
                 intent.setClass(MainActivity.this, FeedbackActivity.class);
                 MainActivity.this.startActivity(intent);
             }
-            case R.id.settings:
-                Toast.makeText(this, "You clicked Settings", Toast.LENGTH_SHORT).show();
+            break;
+            case R.id.settings: {
+                Intent intent = new Intent();
+                //  intent.putExtra("testIntent", "123");
+                intent.setClass(MainActivity.this, HelpActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
                 break;
             default:
         }
