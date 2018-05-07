@@ -20,14 +20,12 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <ImageView
-                android:id="@+id/fruit_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:fitsSystemWindows="true"
-                app:layout_collapseMode="parallax"
-                android:src="@drawable/grape"/>
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/gif_street"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/street2"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -47,51 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="35dp"
-            app:cardCornerRadius="4dp">
-            <TextView android:text="Q1:如何操作这款软件？
-A:按下“开始测试”按钮，开始收集颠簸数据。我们利用svm算法，当背景色出现红色，说明道路处在颠簸状态；当背景色出现绿色时，说明道路处在平稳状态。"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:textSize="18sp"/>
-        </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="35dp"
-                app:cardCornerRadius="4dp">
-                <TextView android:text="Q2:是用什么传感器检测？
-A:我们使用的是手机内置的加速的传感器。"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:textSize="18sp"/>
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="35dp"
-                app:cardCornerRadius="4dp">
-                <TextView android:text=" Q3:如何和你们取得联系？
-A:请联系我们：183xxxxxxx"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:textSize="18sp"/>
-            </android.support.v7.widget.CardView>
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

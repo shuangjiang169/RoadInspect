@@ -23,7 +23,7 @@ public class HelpActivity extends BaseActivity {
         Intent intent = getIntent();
 
         //这两行修改了 fruitName里修改标题
-        String fruitName = "常见问题";
+        String fruitName = "收集数据列表";
         //int fruitImageId = intent.getIntExtra(FRUIT_IMAGE_ID, 0);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
