@@ -12,7 +12,6 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -20,11 +19,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.scrat.app.selectorlibrary.ImageSelector;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -55,12 +55,18 @@ public class FeedbackActivity extends BaseActivity {
   //  private WaitingDialog waitingDialog;
     private boolean uploadSucc = false;
 
+    //添加select 图片
+    private static final int REQUEST_CODE_SELECT_IMG = 1;
+    private static final int MAX_SELECT_COUNT = 9;
+    private TextView mContentTv;
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
 
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_feedback);
+            initView();
             Intent intent = getIntent();
 
             //这两行修改了 fruitName里修改标题
@@ -82,27 +88,61 @@ public class FeedbackActivity extends BaseActivity {
 
 
         }
+
+
+        //添加select 图片
+        private void initView() {
+            mContentTv = (TextView) findViewById(R.id.content);
+        }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_SELECT_IMG) {
+            showContent(data);
+            return;
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void showContent(Intent data) {
+        List<String> paths = ImageSelector.getImagePaths(data);
+        if (paths.isEmpty()) {
+            mContentTv.setText(R.string.image_selector_select_none);
+            return;
+        }
+
+        mContentTv.setText(paths.toString());
+    }
+
+    public void selectImg(View v) {
+        ImageSelector.show(this, REQUEST_CODE_SELECT_IMG, MAX_SELECT_COUNT);
+    }
+
+
+
+    /*
     private void initViews(){
 
         pictureLayout = (RelativeLayout) findViewById(R.id.pictureLayout);
-        telET = (EditText) findViewById(R.id.telET);
+        telET = (EditText) findViewById(R.id.telET);*/
         //  submitBT = (RoundConerTextView) findViewById(R.id.submitBT);
 
      //   feedbackET = (EditText) findViewById(R.id.feedbackET);
         //currentNumberTV = (TextView) findViewById(R.id.currentNumberTV);
         //监控输入字数
 
-
+/*
         feedbackET.addTextChangedListener(watcher);
 
         mGridView=(GridView) findViewById(R.id.gridview);
         mGridViewDatas = new ArrayList<>();
         mGridViewUris = new ArrayList<>();
-     /*   Bitmap addBitmap = Utils.getInstance().readBitmap(getApplicationContext(), R.drawable.add_pic);
+     *//*   Bitmap addBitmap = Utils.getInstance().readBitmap(getApplicationContext(), R.drawable.add_pic);
         mGridViewDatas.add(0, addBitmap);
         mGridViewUris.add(0, new Uri.Builder().build());
         mGridViewAdapter = new GridViewAdapter(getApplication(), mGridViewDatas, MAX_UPLOAD_PIC);
-        mGridView.setAdapter(mGridViewAdapter);*/
+        mGridView.setAdapter(mGridViewAdapter);*//*
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -112,18 +152,13 @@ public class FeedbackActivity extends BaseActivity {
                     if (pictureNumber < MAX_UPLOAD_PIC + 1){
                         chosePictureFromPhone();
                     }
-                }else {
+                }else {*/
                   /*  Uri uri = mGridViewUris.get(position);
                     Intent intent = new Intent(FeedbackActivity.this, PicShowerActivity.class);
                     intent.putExtra(SHOW_PIC_URI, uri.toString());
                     intent.putExtra(PIC_POSITION, position);
                     startActivityForResult(intent, REQUEST_SHOW_PIC);*/
-                }
-            }
-        });
 
-
-    }
 
    /* private void initLayoutParameters(){
         GlobalData globalDate = (GlobalData) getApplication();
