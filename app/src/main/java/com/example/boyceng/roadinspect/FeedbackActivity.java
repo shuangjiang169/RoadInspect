@@ -122,13 +122,6 @@ public class FeedbackActivity extends BaseActivity {
 
 
 
-
-
-
-
-
-
-
         //添加select 图片
         private void initView() {
             mContentTv = (TextView) findViewById(R.id.content);
