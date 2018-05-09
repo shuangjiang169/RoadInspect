@@ -64,7 +64,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="您可以在这里反馈道路的破损情况（列出具体地点，或经纬度等），也可以写下您对本软件的建议。我们会继续改进。谢谢！"
+                    android:text="您可以在这里反馈道路的破损情况（列出具体地点，或经纬度等），还可以上传您拍摄的照片进行更直观的反应。
+也可以写下您对本软件的建议。我们会继续改进。感谢您为“智慧城市”的建设贡献一份力量，谢谢！"
                     android:textSize="20sp"/>
             </android.support.v7.widget.CardView>
 
