@@ -2,6 +2,8 @@
     <string name="app_name">RoadInspect</string>
     <string name="remain_empty">请将账号密码填写完整！</string>
     <string name="remain_error">请将账号密码填写正确！</string>
+    <string name="feed_empty">请填写！</string>
+    <string name="feed_ok">提交成功，感谢您的参与！</string>
     <string name="remain_register_succ">注册成功！</string>
     <string name="cancel">取消</string>
     <string name="ok">确定</string>
@@ -9,4 +11,5 @@
     <string name="image_selector_select_none">No image selected</string>
     <string name="dump">道路颠簸</string>
     <string name="flat">道路平坦</string>
+
 </resources>

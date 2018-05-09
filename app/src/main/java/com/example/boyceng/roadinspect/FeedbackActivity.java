@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -59,6 +60,9 @@ public class FeedbackActivity extends BaseActivity {
     private static final int REQUEST_CODE_SELECT_IMG = 1;
     private static final int MAX_SELECT_COUNT = 9;
     private TextView mContentTv;
+    private Button feedbackBtn;
+    private String feedbacktext = "";
+    private EditText help_feedback;
 
 
         @Override
@@ -68,6 +72,7 @@ public class FeedbackActivity extends BaseActivity {
             setContentView(R.layout.activity_feedback);
             initView();
             Intent intent = getIntent();
+            help_feedback = (EditText) findViewById(R.id.help_feedback);
 
             //这两行修改了 fruitName里修改标题
             String fruitName = " 建议和反馈";
@@ -82,12 +87,46 @@ public class FeedbackActivity extends BaseActivity {
                 actionBar.setDisplayHomeAsUpEnabled(true);
             }
             collapsingToolbar.setTitle(fruitName);
-          //以下为了添加图片上传功能
+            //以下为了添加图片上传功能
             setContentView(R.layout.activity_feedback);
-        //    initLayoutParameters();
+            //    initLayoutParameters();
+
+            //提交按钮判断
+            feedbackBtn = (Button) findViewById(R.id.feedbackBtn);
+            feedbackBtn.setOnClickListener(feedbackClick);
+           /* feedbackBtn.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
 
 
+                }
+            });*/
+            help_feedback.setText("");
         }
+
+        //判断提交按钮
+
+               View.OnClickListener feedbackClick = new View.OnClickListener() {
+        public void onClick(final View v) {
+                if(checkEmpty()){
+                    Toast.makeText(getApplicationContext(),
+                            getString(R.string.feed_ok),Toast.LENGTH_SHORT).show();
+                       finish();
+                }else{
+                    Toast.makeText(getApplicationContext(),
+                            getString(R.string.feed_empty),Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+
+
+
+
+
+
+
+
 
 
         //添加select 图片
@@ -448,7 +487,20 @@ public class FeedbackActivity extends BaseActivity {
             }
             return super.onOptionsItemSelected(item);
         }
+
+    private boolean checkEmpty(){
+        feedbacktext = help_feedback.getText().toString().trim();
+        boolean ret = false;
+        if(help_feedback.equals("")){
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.remain_empty),Toast.LENGTH_SHORT).show();
+            ret = false;
+        }else{
+            ret = true;
+        }
+        return ret;
     }
+}
 
 
 
