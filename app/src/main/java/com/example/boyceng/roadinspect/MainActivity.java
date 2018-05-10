@@ -104,7 +104,7 @@ public class MainActivity extends BaseActivity
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "显示经纬度", Snackbar.LENGTH_SHORT)  //第一个显示内容，第二个显示时间
-                        .setAction("Undo", new View.OnClickListener() {
+                        .setAction("获取", new View.OnClickListener() {
 
                             @Override
                             public void onClick(View v) {

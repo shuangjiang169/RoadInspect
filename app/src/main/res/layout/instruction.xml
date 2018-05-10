@@ -68,6 +68,7 @@
 					android:textColor="#f0a84f"/>
 			</android.support.v7.widget.CardView>
 
+
 			<android.support.v7.widget.CardView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
@@ -76,10 +77,8 @@
 				android:layout_marginRight="15dp"
 				android:layout_marginTop="35dp"
 				app:cardCornerRadius="4dp">
-				<TextView android:text="Q1:什么是群智感知？
-A:群智感知系统作为物联网的新兴技术，利用智能设备作为基本感知单元，通过移动互联网进行一系列的协作，实现感知任务分发与感知数据收集，完成大规模的、复杂的道路状况检测任务。
-基于这种用户无意识群智感知下的城市路况信息采集系统，尤其是相比交管部门部署的智能交通设备来说，我们无需安排专业的人员进行操作，极大的节省了路政部门的工作难度以及工作总量，同时可以提高道路修复的时效性。
-从用户的角度来看，可以辅助他们更好的选择行驶较为平坦的路段，可以更好的保护汽车的性能，节省更多少的时间，最重要的是可以提高道路安全系数，减少交通事故的发生。"
+				<TextView android:text="Q1:你们是使用什么传感器检测？
+A:我们使用的是手机内置的加速的传感器。"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_margin="10dp"
@@ -93,8 +92,10 @@ A:群智感知系统作为物联网的新兴技术，利用智能设备作为基
 				android:layout_marginRight="15dp"
 				android:layout_marginTop="35dp"
 				app:cardCornerRadius="4dp">
-				<TextView android:text="Q2:是用什么传感器检测？
-A:我们使用的是手机内置的加速的传感器。"
+				<TextView android:text="Q2:什么是群智感知？
+A:群智感知系统作为物联网的新兴技术，利用智能设备作为基本感知单元，通过移动互联网进行一系列的协作，实现感知任务分发与感知数据收集，完成大规模的、复杂的道路状况检测任务。
+基于这种用户无意识群智感知下的城市路况信息采集系统，尤其是相比交管部门部署的智能交通设备来说，我们无需安排专业的人员进行操作，极大的节省了路政部门的工作难度以及工作总量，同时可以提高道路修复的时效性。
+从用户的角度来看，可以辅助他们更好的选择行驶较为平坦的路段，可以更好的保护汽车的性能，节省更多少的时间，最重要的是可以提高道路安全系数，减少交通事故的发生。"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_margin="10dp"
