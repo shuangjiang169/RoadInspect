@@ -1,13 +1,17 @@
 package com.example.boyceng.roadinspect;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -15,14 +19,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends BaseActivity
@@ -30,6 +39,13 @@ public class MainActivity extends BaseActivity
     Button bn;
     float X,Y,Z;
     boolean is_on;
+    //定位信息
+    public LocationClient mLocationClient;
+    private TextView positionText;
+    private final boolean isfabButton = true;
+
+
+    //声明一个操作常量字符串
     public static final String ACTION_UPDATEUI = "action.updateUI";
     UpdateUIBroadcastReceiver broadcastReceiver;
 
@@ -38,7 +54,6 @@ public class MainActivity extends BaseActivity
         getMenuInflater().inflate(R.menu.toolbar, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -69,7 +84,7 @@ public class MainActivity extends BaseActivity
         }
         return true;
     }
-
+//toolbar end
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,20 +98,49 @@ public class MainActivity extends BaseActivity
         is_on=false;
 
 //以下是实现悬浮按钮 √
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Data deleted", Snackbar.LENGTH_SHORT)  //第一个显示内容，第二个显示时间
+                Snackbar.make(view, "显示经纬度", Snackbar.LENGTH_SHORT)  //第一个显示内容，第二个显示时间
                         .setAction("Undo", new View.OnClickListener() {
+
                             @Override
                             public void onClick(View v) {
-                                Toast.makeText(MainActivity.this, "Data restored", Toast.LENGTH_SHORT).show();
+                                if(isfabButton){
+                                    positionText.setVisibility(View.VISIBLE);
+                                   // isfabButton = false;
+                                }else {
+                                    positionText.setVisibility(View.GONE);
+                                  //  isfabButton = true;
+                                }
                             }
                         })
                         .show();
             }
         });
+
+           //以下实现定位信息显示
+        positionText = (TextView) findViewById(R.id.position_text_view);
+        mLocationClient = new LocationClient(getApplicationContext());
+        mLocationClient.registerLocationListener(new MyLocationListener());
+        List<String> permissionList = new ArrayList<>();
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.READ_PHONE_STATE);
+        }
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (!permissionList.isEmpty()) {
+            String [] permissions = permissionList.toArray(new String[permissionList.size()]);
+            ActivityCompat.requestPermissions(MainActivity.this, permissions, 1);
+        } else {
+            requestLocation();
+        }
 
 
 
@@ -104,8 +148,10 @@ public class MainActivity extends BaseActivity
 
 
         try{
+            Log.d("MainActivity"," try info");
             File file = new File(Environment.getExternalStorageDirectory(), "train.svm.model");
             FileOutputStream fos = new FileOutputStream(file);
+            Log.d("MainActivity"," try info");
             String info = "svm_type c_svc\n" +
                     "kernel_type rbf\n" +
                     "gamma 0.5\n" +
@@ -222,7 +268,6 @@ public class MainActivity extends BaseActivity
             fos.write(info.getBytes());
             fos.close();
           Log.d("MainActivity"," train.svm.model 写入成功!!!");
-
         } catch (Exception e) {
              Log.d("MainActivity","Error in create!!!");
             e.printStackTrace();
@@ -241,11 +286,10 @@ public class MainActivity extends BaseActivity
                 {
                     is_on = true;
                     startService(intent);
-
+                    broadcastReceiver = new UpdateUIBroadcastReceiver();    //生成broadreceiver对象
                     IntentFilter filter = new IntentFilter();
-                    filter.addAction(ACTION_UPDATEUI);
-                    broadcastReceiver = new UpdateUIBroadcastReceiver();
-                    registerReceiver(broadcastReceiver, filter);
+                    filter.addAction(ACTION_UPDATEUI);        //通过广播更新面板界面
+                    registerReceiver(broadcastReceiver, filter);        //注册broadreceiver
 
                 }
                 else
@@ -256,7 +300,7 @@ public class MainActivity extends BaseActivity
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
                     Back.setBackgroundResource(R.color.dark);
                     stopService(intent);
-                    unregisterReceiver(broadcastReceiver);
+                    unregisterReceiver(broadcastReceiver);     //解除注册
                 }
             }
         });
@@ -267,7 +311,7 @@ public class MainActivity extends BaseActivity
         @Override
         public void onReceive(Context context, Intent intent) {
             //et.setText(String.valueOf(intent.getExtras().getString("info")));
-
+             //收到广播后执行以下
             String outcome = null;
             outcome = String.valueOf(intent.getExtras().getString("outcome"));      //计算所得 cov、avg、stdev
             if(outcome != null)
@@ -358,7 +402,7 @@ public class MainActivity extends BaseActivity
         }
     }
 
-  /*  protected  void onDestroy()
+   protected  void onDestroy()
     {
         super.onDestroy();
         unregisterReceiver(broadcastReceiver);
@@ -367,5 +411,55 @@ public class MainActivity extends BaseActivity
         {
             file.delete();
         }
-    }*/
+    }
+
+
+
+  //百度定位
+    private void requestLocation() {
+        mLocationClient.start();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0) {
+                    for (int result : grantResults) {
+                        if (result != PackageManager.PERMISSION_GRANTED) {
+                            Toast.makeText(this, "必须同意所有权限才能使用本程序", Toast.LENGTH_SHORT).show();
+                            finish();
+                            return;
+                        }
+                    }
+                    requestLocation();
+                } else {
+                    Toast.makeText(this, "发生未知错误", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+            default:
+        }
+    }
+    public class MyLocationListener implements BDLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            StringBuilder currentPosition = new StringBuilder();
+            currentPosition.append("纬度：").append(location.getLatitude()).append("\n");
+            currentPosition.append("经线：").append(location.getLongitude()).append("\n");
+            currentPosition.append("国家：").append(location.getCountry()).append("\n");
+            currentPosition.append("省：").append(location.getProvince()).append("\n");
+            currentPosition.append("市：").append(location.getCity()).append("\n");
+            currentPosition.append("区：").append(location.getDistrict()).append("\n");
+            currentPosition.append("街道：").append(location.getStreet()).append("\n");
+            currentPosition.append("定位方式：");
+            if (location.getLocType() == BDLocation.TypeGpsLocation) {
+                currentPosition.append("GPS");
+            } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {
+                currentPosition.append("网络");
+            }
+                    positionText.setText(currentPosition);
+                   }
+              }
 }

@@ -34,6 +34,13 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_done" />
 
+    <TextView
+        android:id="@+id/position_text_view"
+        android:layout_width="7dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="-6dp" />
+
 </android.support.design.widget.CoordinatorLayout>
 
 
