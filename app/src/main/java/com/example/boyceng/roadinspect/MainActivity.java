@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -299,7 +300,7 @@ public class MainActivity extends BaseActivity
                     //et = (TextView)findViewById(R.id.view);
                     //et.setText("");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
-                    Back.setBackgroundResource(R.color.dark);
+                    Back.setBackgroundResource(R.color.white);
                     stopService(intent);
                     unregisterReceiver(broadcastReceiver);     //解除注册
                 }
@@ -406,6 +407,7 @@ public class MainActivity extends BaseActivity
    protected  void onDestroy()
     {
         super.onDestroy();
+        mLocationClient.stop();
         unregisterReceiver(broadcastReceiver);
         File file = new File(Environment.getExternalStorageDirectory(), "train.svm.model");
         if(file.isFile() && file.exists())
@@ -418,7 +420,15 @@ public class MainActivity extends BaseActivity
 
   //百度定位
     private void requestLocation() {
+        initLocation();
         mLocationClient.start();
+    }
+
+    private void initLocation(){
+        LocationClientOption option = new LocationClientOption();
+        option.setScanSpan(1000);
+        option.setIsNeedAddress(true);
+        mLocationClient.setLocOption(option);
     }
 
     @Override
@@ -463,4 +473,7 @@ public class MainActivity extends BaseActivity
                     positionText.setText(currentPosition);
                    }
               }
+
+
+
 }
