@@ -286,6 +286,7 @@ public class MainActivity extends BaseActivity
                 {
                     is_on = true;
                     startService(intent);
+
                     broadcastReceiver = new UpdateUIBroadcastReceiver();    //生成broadreceiver对象
                     IntentFilter filter = new IntentFilter();
                     filter.addAction(ACTION_UPDATEUI);        //通过广播更新面板界面
@@ -374,16 +375,16 @@ public class MainActivity extends BaseActivity
                     //et.append("dump\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
                     Back.setBackgroundResource(R.color.red);
-                    Toast.makeText(getApplicationContext(),
-                            getString(R.string.dump),Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),   这个toast反应太慢了 会卡
+                      //     getString(R.string.dump),Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
                     //et.append("flat\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
                     Back.setBackgroundResource(R.color.green);
-                    Toast.makeText(getApplicationContext(),
-                            getString(R.string.flat),Toast.LENGTH_SHORT).show();
+               //  Toast.makeText(getApplicationContext(),
+                 //        getString(R.string.flat),Toast.LENGTH_SHORT).show();
                 }
 
                 File file1 = new File(path, save);
