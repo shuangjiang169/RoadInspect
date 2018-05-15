@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -18,7 +19,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -307,8 +307,10 @@ public class MainActivity extends BaseActivity
                     is_on = false;
                     //et = (TextView)findViewById(R.id.view);
                     //et.setText("");
-                    RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
-                    Back.setBackgroundResource(R.color.white);
+                    final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
+                    audioColumnView.stop();
+                    //结束跳动
+                    audioColumnView.setBackgroundColor(Color.parseColor("#000000"));
                     stopService(intent);
                     unregisterReceiver(broadcastReceiver);     //解除注册
                 }
@@ -384,6 +386,8 @@ public class MainActivity extends BaseActivity
                     final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
                     audioColumnView.stop();
                     //开始跳动
+
+                    audioColumnView.setBackgroundColor(Color.parseColor("#AA0000"));
                     audioColumnView.start();
                    /* //et.append("dump\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
@@ -395,6 +399,7 @@ public class MainActivity extends BaseActivity
                     final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
                     audioColumnView.stop();
                     //结束跳动
+                    audioColumnView.setBackgroundColor(Color.parseColor("#006600"));
                     audioColumnView.stop();
                     /*//et.append("flat\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
