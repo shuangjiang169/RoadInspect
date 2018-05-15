@@ -50,6 +50,8 @@ public class MainActivity extends BaseActivity
     public static final String ACTION_UPDATEUI = "action.updateUI";
     UpdateUIBroadcastReceiver broadcastReceiver;
 
+
+
     //以下是调用toolbar
     public boolean onCreateOptionsMenu (Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar, menu);
@@ -97,6 +99,12 @@ public class MainActivity extends BaseActivity
         bn = (Button)findViewById(R.id.power);
         //et = (TextView)findViewById(R.id.view);
         is_on=false;
+
+
+
+        //以下是跳动柱条
+        final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
+        audioColumnView.stop();
 
 //以下是实现悬浮按钮 √
 
@@ -373,19 +381,25 @@ public class MainActivity extends BaseActivity
 
                 if(flag==1)
                 {
-                    //et.append("dump\n");
+                    final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
+                    audioColumnView.stop();
+                    //开始跳动
+                    audioColumnView.start();
+                   /* //et.append("dump\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
-                    Back.setBackgroundResource(R.color.red);
-                    //Toast.makeText(getApplicationContext(),   这个toast反应太慢了 会卡
-                      //     getString(R.string.dump),Toast.LENGTH_SHORT).show();
+                    Back.setBackgroundResource(R.color.red);*/
+
                 }
                 else
                 {
-                    //et.append("flat\n");
+                    final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
+                    audioColumnView.stop();
+                    //结束跳动
+                    audioColumnView.stop();
+                    /*//et.append("flat\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
-                    Back.setBackgroundResource(R.color.green);
-               //  Toast.makeText(getApplicationContext(),
-                 //        getString(R.string.flat),Toast.LENGTH_SHORT).show();
+                    Back.setBackgroundResource(R.color.green);*/
+
                 }
 
                 File file1 = new File(path, save);
