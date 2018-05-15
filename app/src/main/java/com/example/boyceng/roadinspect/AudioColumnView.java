@@ -19,7 +19,7 @@ import java.util.TimerTask;
  */
 
 public class AudioColumnView extends View {
-    private int columnNum = 5;
+    private int columnNum = 10;
     private int random;
     private boolean isStart = true;
     private Random mRandom;
@@ -28,6 +28,14 @@ public class AudioColumnView extends View {
     private int mRect_t3;
     private int mRect_t4;
     private int mRect_t5;
+    private int mRect_t6;
+    private int mRect_t7;
+    private int mRect_t8;
+    private int mRect_t9;
+    private int mRect_t10;
+
+
+
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -45,6 +53,12 @@ public class AudioColumnView extends View {
     private RectF r3;
     private RectF r4;
     private RectF r5;
+    private RectF r6;
+    private RectF r7;
+    private RectF r8;
+    private RectF r9;
+    private RectF r10
+            ;
     public AudioColumnView(Context context) {
         this(context, null);
     }
@@ -68,6 +82,11 @@ public class AudioColumnView extends View {
         r3 = new RectF();
         r4 = new RectF();
         r5 = new RectF();
+        r6 = new RectF();
+        r7 = new RectF();
+        r8 = new RectF();
+        r9 = new RectF();
+        r10 = new RectF();
     }
 
     @Override
@@ -76,7 +95,7 @@ public class AudioColumnView extends View {
         mWidth = MeasureSpec.getSize(widthMeasureSpec);
         mHeight = MeasureSpec.getSize(heightMeasureSpec);
         mRect_w = mWidth/(2*columnNum+1);
-        random =mHeight / 5;
+        random =mHeight / 10;
     }
 
     public void start(){
@@ -106,20 +125,36 @@ public class AudioColumnView extends View {
                     mRect_t3 = mRandom.nextInt(random);
                     mRect_t4 = mRandom.nextInt(random);
                     mRect_t5 = mRandom.nextInt(random);
+                    mRect_t6 = mRandom.nextInt(random);
+                    mRect_t7 = mRandom.nextInt(random);
+                    mRect_t8 = mRandom.nextInt(random);
+                    mRect_t9 = mRandom.nextInt(random);
+                    mRect_t10 = mRandom.nextInt(random);
+
                     mHandler.sendEmptyMessage(0x1234);
                 }
             },300);
         }
-        //画柱状；动态图，就要改变柱状的top值
-        r1.set((float) (mRect_w),mRect_t1*5,(float)( mRect_w*2),(float) (mHeight*0.9));
-        r2.set((float) (mRect_w*3),mRect_t2*5,(float)(mRect_w*4),(float) (mHeight*0.9));
-        r3.set((float) (mRect_w*5),mRect_t3*5,(float)(mRect_w*6),(float) (mHeight*0.9));
-        r4.set((float) (mRect_w*7),mRect_t4*5,(float)( mRect_w*8),(float) (mHeight*0.9));
-        r5.set((float) (mRect_w*9),mRect_t5*5,(float)(mRect_w*10),(float) (mHeight*0.9));
+        //画柱状；动态图，就要改变柱状的top值        改变两个mRect_w的值可以改变柱状宽度，必须按等差数列来 ， mRect_t1*10 几根条就乘以几
+        r1.set((float) (mRect_w),mRect_t1*columnNum,(float)( mRect_w*2),(float) (mHeight*0.9));
+        r2.set((float) (mRect_w*3),mRect_t2*columnNum,(float)(mRect_w*4),(float) (mHeight*0.9));
+        r3.set((float) (mRect_w*5),mRect_t3*columnNum,(float)(mRect_w*6),(float) (mHeight*0.9));
+        r4.set((float) (mRect_w*7),mRect_t4*columnNum,(float)( mRect_w*8),(float) (mHeight*0.9));
+        r5.set((float) (mRect_w*9),mRect_t5*columnNum,(float)(mRect_w*10),(float) (mHeight*0.9));
+        r6.set((float) (mRect_w*11),mRect_t6*columnNum,(float)( mRect_w*12),(float) (mHeight*0.9));
+        r7.set((float) (mRect_w*13),mRect_t7*columnNum,(float)(mRect_w*14),(float) (mHeight*0.9));
+        r8.set((float) (mRect_w*15),mRect_t8*columnNum,(float)(mRect_w*16),(float) (mHeight*0.9));
+        r9.set((float) (mRect_w*17),mRect_t9*columnNum,(float)( mRect_w*18),(float) (mHeight*0.9));
+        r10.set((float) (mRect_w*19),mRect_t10*columnNum,(float)(mRect_w*20),(float) (mHeight*0.9));
         canvas.drawRect(r1,mPaint);
         canvas.drawRect(r2,mPaint);
         canvas.drawRect(r3,mPaint);
         canvas.drawRect(r4,mPaint);
         canvas.drawRect(r5,mPaint);
+        canvas.drawRect(r6,mPaint);
+        canvas.drawRect(r7,mPaint);
+        canvas.drawRect(r8,mPaint);
+        canvas.drawRect(r9,mPaint);
+        canvas.drawRect(r10,mPaint);
     }
 }
