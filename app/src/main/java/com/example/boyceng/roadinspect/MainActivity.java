@@ -294,6 +294,8 @@ public class MainActivity extends BaseActivity
                 if(!is_on)
                 {
                     is_on = true;
+                    //换按钮图
+                    bn.setBackgroundResource(R.drawable.stop);
                     startService(intent);
 
                     broadcastReceiver = new UpdateUIBroadcastReceiver();    //生成broadreceiver对象
@@ -305,6 +307,8 @@ public class MainActivity extends BaseActivity
                 else
                 {
                     is_on = false;
+                    //换按钮图
+                    bn.setBackgroundResource(R.drawable.run);
                     //et = (TextView)findViewById(R.id.view);
                     //et.setText("");
                     final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
@@ -386,9 +390,8 @@ public class MainActivity extends BaseActivity
                     final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
                     audioColumnView.stop();
                     //开始跳动
-
-                    audioColumnView.setBackgroundColor(Color.parseColor("#AA0000"));
-                    audioColumnView.start();
+                   // audioColumnView.setBackgroundColor(Color.parseColor("#AA0000"));
+                   // audioColumnView.start();
                    /* //et.append("dump\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
                     Back.setBackgroundResource(R.color.red);*/
@@ -399,8 +402,8 @@ public class MainActivity extends BaseActivity
                     final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
                     audioColumnView.stop();
                     //结束跳动
-                    audioColumnView.setBackgroundColor(Color.parseColor("#006600"));
-                    audioColumnView.stop();
+                    //audioColumnView.setBackgroundColor(Color.parseColor("#006600"));
+                    //audioColumnView.stop();
                     /*//et.append("flat\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
                     Back.setBackgroundResource(R.color.green);*/
@@ -445,6 +448,7 @@ public class MainActivity extends BaseActivity
 
     private void initLocation(){
         LocationClientOption option = new LocationClientOption();
+        option.setAddrType("all"); //加上这个配置后才可以取到详细地址信息
         option.setScanSpan(1000);
         option.setIsNeedAddress(true);
         mLocationClient.setLocOption(option);
@@ -475,15 +479,20 @@ public class MainActivity extends BaseActivity
 
         @Override
         public void onReceiveLocation(BDLocation location) {
-            StringBuilder currentPosition = new StringBuilder();
+            if(location == null){
+                Toast.makeText(MainActivity.this, "无法定位", Toast.LENGTH_SHORT).show();
+                return ;
+            }
+
+                StringBuilder currentPosition = new StringBuilder();
             currentPosition.append("纬度：").append(location.getLatitude()).append("\n");
             currentPosition.append("经线：").append(location.getLongitude()).append("\n");
-            currentPosition.append("国家：").append(location.getCountry()).append("\n");
+           /* currentPosition.append("国家：").append(location.getCountry()).append("\n");
             currentPosition.append("省：").append(location.getProvince()).append("\n");
             currentPosition.append("市：").append(location.getCity()).append("\n");
             currentPosition.append("区：").append(location.getDistrict()).append("\n");
-            currentPosition.append("街道：").append(location.getStreet()).append("\n");
-            currentPosition.append("定位方式：");
+            currentPosition.append("街道：").append(location.getStreet()).append("\n");*/
+            currentPosition.append("定位方式：网络/GPS");
             if (location.getLocType() == BDLocation.TypeGpsLocation) {
                 currentPosition.append("GPS");
             } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {

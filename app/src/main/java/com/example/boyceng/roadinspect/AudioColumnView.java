@@ -75,7 +75,10 @@ public class AudioColumnView extends View {
     private void init() {
         mRandom = new Random();
         mPaint = new Paint();
-        mPaint.setColor(Color.WHITE);
+        mPaint.setColor(Color.parseColor("#c7e9fe"));
+        //绘制阴影，param1：模糊半径；param2：x轴大小：param3：y轴大小；param4：阴影颜色
+        mPaint.setShadowLayer(10F, 15F, 15F, Color.parseColor("#abd3f9"));
+      // mPaint.setAlpha(int 222);
         mPaint.setStyle(Paint.Style.FILL);
         r1 = new RectF();
         r2 = new RectF();
@@ -136,25 +139,25 @@ public class AudioColumnView extends View {
             },300);
         }
         //画柱状；动态图，就要改变柱状的top值        改变两个mRect_w的值可以改变柱状宽度，必须按等差数列来 ， mRect_t1*10 几根条就乘以几
-        r1.set((float) (mRect_w),mRect_t1*columnNum,(float)( mRect_w*2),(float) (mHeight*0.9));
-        r2.set((float) (mRect_w*3),mRect_t2*columnNum,(float)(mRect_w*4),(float) (mHeight*0.9));
-        r3.set((float) (mRect_w*5),mRect_t3*columnNum,(float)(mRect_w*6),(float) (mHeight*0.9));
-        r4.set((float) (mRect_w*7),mRect_t4*columnNum,(float)( mRect_w*8),(float) (mHeight*0.9));
-        r5.set((float) (mRect_w*9),mRect_t5*columnNum,(float)(mRect_w*10),(float) (mHeight*0.9));
-        r6.set((float) (mRect_w*11),mRect_t6*columnNum,(float)( mRect_w*12),(float) (mHeight*0.9));
-        r7.set((float) (mRect_w*13),mRect_t7*columnNum,(float)(mRect_w*14),(float) (mHeight*0.9));
-        r8.set((float) (mRect_w*15),mRect_t8*columnNum,(float)(mRect_w*16),(float) (mHeight*0.9));
-        r9.set((float) (mRect_w*17),mRect_t9*columnNum,(float)( mRect_w*18),(float) (mHeight*0.9));
-        r10.set((float) (mRect_w*19),mRect_t10*columnNum,(float)(mRect_w*20),(float) (mHeight*0.9));
-        canvas.drawRect(r1,mPaint);
-        canvas.drawRect(r2,mPaint);
-        canvas.drawRect(r3,mPaint);
-        canvas.drawRect(r4,mPaint);
-        canvas.drawRect(r5,mPaint);
-        canvas.drawRect(r6,mPaint);
-        canvas.drawRect(r7,mPaint);
-        canvas.drawRect(r8,mPaint);
-        canvas.drawRect(r9,mPaint);
-        canvas.drawRect(r10,mPaint);
+        r1.set((float) (mRect_w),mRect_t1*columnNum,(float)( mRect_w*2),(float) (mHeight));
+        r2.set((float) (mRect_w*3),mRect_t2*columnNum,(float)(mRect_w*4),(float) (mHeight));
+        r3.set((float) (mRect_w*5),mRect_t3*columnNum,(float)(mRect_w*6),(float) (mHeight));
+        r4.set((float) (mRect_w*7),mRect_t4*columnNum,(float)( mRect_w*8),(float) (mHeight));
+        r5.set((float) (mRect_w*9),mRect_t5*columnNum,(float)(mRect_w*10),(float) (mHeight));
+        r6.set((float) (mRect_w*11),mRect_t6*columnNum,(float)( mRect_w*12),(float) (mHeight));
+        r7.set((float) (mRect_w*13),mRect_t7*columnNum,(float)(mRect_w*14),(float) (mHeight));
+        r8.set((float) (mRect_w*15),mRect_t8*columnNum,(float)(mRect_w*16),(float) (mHeight));
+        r9.set((float) (mRect_w*17),mRect_t9*columnNum,(float)( mRect_w*18),(float) (mHeight));
+        r10.set((float) (mRect_w*19),mRect_t10*columnNum,(float)(mRect_w*20),(float) (mHeight));
+        canvas.drawRoundRect(r1, 0, 40, mPaint);
+        canvas.drawRoundRect(r2, 40, 40, mPaint);
+        canvas.drawRoundRect(r3, 40, 40, mPaint);
+        canvas.drawRoundRect(r4, 40, 40, mPaint);
+        canvas.drawRoundRect(r5, 40, 40, mPaint);
+        canvas.drawRoundRect(r6, 40, 40, mPaint);
+        canvas.drawRoundRect(r7, 40, 40, mPaint);
+        canvas.drawRoundRect(r8, 40, 40, mPaint);
+        canvas.drawRoundRect(r9, 40, 40, mPaint);
+        canvas.drawRoundRect(r10, 40, 40, mPaint);
     }
 }
