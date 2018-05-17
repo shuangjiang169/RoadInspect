@@ -151,13 +151,13 @@ public class AudioColumnView extends View {
         r10.set((float) (mRect_w*19),mRect_t10*columnNum,(float)(mRect_w*20),(float) (mHeight));
         canvas.drawRoundRect(r1, 20, 20, mPaint);
         canvas.drawRoundRect(r2, 20, 20, mPaint);
-        canvas.drawRoundRect(r3, 40, 40, mPaint);
-        canvas.drawRoundRect(r4, 40, 40, mPaint);
-        canvas.drawRoundRect(r5, 40, 40, mPaint);
-        canvas.drawRoundRect(r6, 40, 40, mPaint);
-        canvas.drawRoundRect(r7, 40, 40, mPaint);
-        canvas.drawRoundRect(r8, 40, 40, mPaint);
-        canvas.drawRoundRect(r9, 40, 40, mPaint);
-        canvas.drawRoundRect(r10, 40, 40, mPaint);
+        canvas.drawRoundRect(r3, 20, 20, mPaint);
+        canvas.drawRoundRect(r4, 20, 20, mPaint);
+        canvas.drawRoundRect(r5, 20, 20, mPaint);
+        canvas.drawRoundRect(r6, 20, 20,mPaint);
+        canvas.drawRoundRect(r7, 20, 20, mPaint);
+        canvas.drawRoundRect(r8, 20, 20, mPaint);
+        canvas.drawRoundRect(r9, 20, 20, mPaint);
+        canvas.drawRoundRect(r10, 20, 20, mPaint);
     }
 }

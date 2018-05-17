@@ -35,6 +35,7 @@ import java.util.List;
 public class MainActivity extends BaseActivity
 {
     Button bn;
+    TextView dump;
     float X,Y,Z;
     boolean is_on;
     //定位信息
@@ -388,8 +389,8 @@ public class MainActivity extends BaseActivity
                     //开始跳动
                    // audioColumnView.setBackgroundColor(Color.parseColor("#AA0000"));
                     audioColumnView.start();
-                    Toast.makeText(getApplicationContext(),
-                            getString(R.string.dump),Toast.LENGTH_SHORT).show();
+                    //换按钮图
+                   // dump.setBackgroundResource(R.drawable.dump);
                    /* //et.append("dump\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
                     Back.setBackgroundResource(R.color.red);*/
@@ -401,7 +402,8 @@ public class MainActivity extends BaseActivity
                     audioColumnView.stop();
                     //结束跳动
                     //audioColumnView.setBackgroundColor(Color.parseColor("#006600"));
-                    audioColumnView.stop();
+                    //换按钮图
+                    //dump.setBackgroundResource(R.drawable.flat);
                     /*//et.append("flat\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
                     Back.setBackgroundResource(R.color.green);*/
