@@ -298,6 +298,7 @@ public class MainActivity extends BaseActivity
                     //换按钮图
                     FloatingActionButton bn = (FloatingActionButton) findViewById(R.id.power);
                     bn.setImageResource(R.drawable.stop);
+
                     startService(intent);
 
                     broadcastReceiver = new UpdateUIBroadcastReceiver();    //生成broadreceiver对象
@@ -312,8 +313,6 @@ public class MainActivity extends BaseActivity
                     //换按钮图
                     FloatingActionButton bn = (FloatingActionButton) findViewById(R.id.power);
                     bn.setImageResource(R.drawable.run);
-                    //et = (TextView)findViewById(R.id.view);
-                    //et.setText("");
                     final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
                     audioColumnView.stop();
                     //结束跳动

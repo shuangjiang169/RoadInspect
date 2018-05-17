@@ -37,7 +37,6 @@
         android:layout_margin="16dp"
         android:src="@drawable/run"
         android:scaleType="fitXY"
-        android:background="#e0000000"
         android:foreground="?attr/selectableItemBackground" />
 
 
