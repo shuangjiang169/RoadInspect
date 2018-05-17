@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -394,6 +395,9 @@ public class MainActivity extends BaseActivity
                    // audioColumnView.setBackgroundColor(Color.parseColor("#AA0000"));
                     audioColumnView.start();
                     //换图
+                    ImageView Back = (ImageView) findViewById(R.id.dump);
+                    Back.setImageResource(R.drawable.dump);
+
                    // ImageView imgDev = new ImageView(this);
                    // imgDev.setImageResource(R.drawable.dump);
                    // Resource dump = (Resource) findViewById(R.id.dump);
@@ -410,6 +414,8 @@ public class MainActivity extends BaseActivity
                     //结束跳动
                     //audioColumnView.setBackgroundColor(Color.parseColor("#006600"));
                     //换按钮图
+                    ImageView Back = (ImageView) findViewById(R.id.dump);
+                    Back.setImageResource(R.drawable.flat);
                     //dump.setBackgroundResource(R.drawable.flat);
                     /*//et.append("flat\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);

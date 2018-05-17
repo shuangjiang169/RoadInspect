@@ -64,7 +64,7 @@
 					android:layout_height="wrap_content"
 					android:layout_margin="10dp"
 					android:text="使用说明：
-按下右下角“开始”按钮，开始收集道路的颠簸数据。我们利用svm算法，当远处屏幕中央的白色柱子高度开始随机跳动，说明道路处在颠簸状态；当白色柱子高度停住不动时，说明道路处在平稳状态。"
+按下右下角“开始”按钮，开始收集道路的颠簸数据。我们利用svm算法，当远处屏幕中央的白色柱子高度开始随机跳动，标牌出现红叉，说明道路处在颠簸状态；当白色柱子高度停住不动时，标牌显示绿勾，说明道路处在平稳状态。"
 					android:textSize="20sp" />
 			</android.support.v7.widget.CardView>
 			<android.support.v7.widget.CardView
