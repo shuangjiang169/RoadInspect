@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
@@ -94,7 +95,8 @@ public class MainActivity extends BaseActivity
         setContentView(R.layout.activity_main); //初始化布局
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        bn = (Button)findViewById(R.id.power);
+        FloatingActionButton bn = (FloatingActionButton) findViewById(R.id.power);
+        //bn = (Button)findViewById(R.id.power);
         //et = (TextView)findViewById(R.id.view);
         is_on=false;
 
@@ -293,7 +295,8 @@ public class MainActivity extends BaseActivity
                 {
                     is_on = true;
                     //换按钮图
-                    bn.setBackgroundResource(R.drawable.stop);
+                    FloatingActionButton bn = (FloatingActionButton) findViewById(R.id.power);
+                    bn.setImageResource(R.drawable.stop);
                     startService(intent);
 
                     broadcastReceiver = new UpdateUIBroadcastReceiver();    //生成broadreceiver对象
@@ -306,7 +309,8 @@ public class MainActivity extends BaseActivity
                 {
                     is_on = false;
                     //换按钮图
-                    bn.setBackgroundResource(R.drawable.run);
+                    FloatingActionButton bn = (FloatingActionButton) findViewById(R.id.power);
+                    bn.setImageResource(R.drawable.run);
                     //et = (TextView)findViewById(R.id.view);
                     //et.setText("");
                     final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
@@ -385,12 +389,15 @@ public class MainActivity extends BaseActivity
                 if(flag==1)
                 {
                     final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
-                    audioColumnView.stop();
+                    //audioColumnView.stop();
                     //开始跳动
                    // audioColumnView.setBackgroundColor(Color.parseColor("#AA0000"));
                     audioColumnView.start();
-                    //换按钮图
-                   // dump.setBackgroundResource(R.drawable.dump);
+                    //换图
+                   // ImageView imgDev = new ImageView(this);
+                   // imgDev.setImageResource(R.drawable.dump);
+                   // Resource dump = (Resource) findViewById(R.id.dump);
+                   // dump.s(R.drawable.dump);
                    /* //et.append("dump\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
                     Back.setBackgroundResource(R.color.red);*/
