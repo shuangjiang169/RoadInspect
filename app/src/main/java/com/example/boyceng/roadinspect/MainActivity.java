@@ -6,11 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
@@ -108,7 +105,7 @@ public class MainActivity extends BaseActivity
 
 //以下是实现悬浮按钮 √
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,14 +118,14 @@ public class MainActivity extends BaseActivity
                                     positionText.setVisibility(View.VISIBLE);
                                    // isfabButton = false;
                                 }else {
-                                    positionText.setVisibility(View.GONE);
+                                  //  positionText.setVisibility(View.GONE);
                                   //  isfabButton = true;
                                 }
                             }
                         })
                         .show();
             }
-        });
+        });*/
 
            //以下实现定位信息显示
         positionText = (TextView) findViewById(R.id.position_text_view);
@@ -314,7 +311,6 @@ public class MainActivity extends BaseActivity
                     final AudioColumnView audioColumnView = (AudioColumnView) findViewById(R.id.acv);
                     audioColumnView.stop();
                     //结束跳动
-                    audioColumnView.setBackgroundColor(Color.parseColor("#000000"));
                     stopService(intent);
                     unregisterReceiver(broadcastReceiver);     //解除注册
                 }
@@ -391,7 +387,9 @@ public class MainActivity extends BaseActivity
                     audioColumnView.stop();
                     //开始跳动
                    // audioColumnView.setBackgroundColor(Color.parseColor("#AA0000"));
-                   // audioColumnView.start();
+                    audioColumnView.start();
+                    Toast.makeText(getApplicationContext(),
+                            getString(R.string.dump),Toast.LENGTH_SHORT).show();
                    /* //et.append("dump\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
                     Back.setBackgroundResource(R.color.red);*/
@@ -403,7 +401,7 @@ public class MainActivity extends BaseActivity
                     audioColumnView.stop();
                     //结束跳动
                     //audioColumnView.setBackgroundColor(Color.parseColor("#006600"));
-                    //audioColumnView.stop();
+                    audioColumnView.stop();
                     /*//et.append("flat\n");
                     RelativeLayout Back = (RelativeLayout) findViewById(R.id.background);
                     Back.setBackgroundResource(R.color.green);*/
@@ -486,7 +484,7 @@ public class MainActivity extends BaseActivity
 
                 StringBuilder currentPosition = new StringBuilder();
             currentPosition.append("纬度：").append(location.getLatitude()).append("\n");
-            currentPosition.append("经线：").append(location.getLongitude()).append("\n");
+            currentPosition.append("经度：").append(location.getLongitude()).append("\n");
            /* currentPosition.append("国家：").append(location.getCountry()).append("\n");
             currentPosition.append("省：").append(location.getProvince()).append("\n");
             currentPosition.append("市：").append(location.getCity()).append("\n");

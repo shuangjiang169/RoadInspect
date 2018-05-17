@@ -75,9 +75,9 @@ public class AudioColumnView extends View {
     private void init() {
         mRandom = new Random();
         mPaint = new Paint();
-        mPaint.setColor(Color.parseColor("#c7e9fe"));
+        mPaint.setColor(Color.parseColor("#ffffff"));
         //绘制阴影，param1：模糊半径；param2：x轴大小：param3：y轴大小；param4：阴影颜色
-        mPaint.setShadowLayer(10F, 15F, 15F, Color.parseColor("#abd3f9"));
+        mPaint.setShadowLayer(3F, 2F, 2F, Color.parseColor("#abd3f9"));
       // mPaint.setAlpha(int 222);
         mPaint.setStyle(Paint.Style.FILL);
         r1 = new RectF();
@@ -149,8 +149,8 @@ public class AudioColumnView extends View {
         r8.set((float) (mRect_w*15),mRect_t8*columnNum,(float)(mRect_w*16),(float) (mHeight));
         r9.set((float) (mRect_w*17),mRect_t9*columnNum,(float)( mRect_w*18),(float) (mHeight));
         r10.set((float) (mRect_w*19),mRect_t10*columnNum,(float)(mRect_w*20),(float) (mHeight));
-        canvas.drawRoundRect(r1, 40, 40, mPaint);
-        canvas.drawRoundRect(r2, 40, 40, mPaint);
+        canvas.drawRoundRect(r1, 20, 20, mPaint);
+        canvas.drawRoundRect(r2, 20, 20, mPaint);
         canvas.drawRoundRect(r3, 40, 40, mPaint);
         canvas.drawRoundRect(r4, 40, 40, mPaint);
         canvas.drawRoundRect(r5, 40, 40, mPaint);
