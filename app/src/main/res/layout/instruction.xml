@@ -56,7 +56,7 @@
 				android:layout_marginRight="15dp"
 				android:layout_marginTop="35dp"
 				app:cardCornerRadius="4dp"
-				app:cardBackgroundColor="#fde2aa">
+				app:cardBackgroundColor="#f6d76d">
 
 				<TextView
 					android:id="@+id/fruit_content_text"
@@ -76,7 +76,7 @@
 				android:layout_marginRight="15dp"
 				android:layout_marginTop="5dp"
 				app:cardCornerRadius="4dp"
-				app:cardBackgroundColor="#f6d76d">
+				app:cardBackgroundColor="#FFF">
 				<TextView android:text="Q1:定位显示为什么显示不出来？
 A:初次定位显示反应较慢，需要等待。保持网络状况良好和GPS打开的情况下获取定位信息将会更快速准确。"
 					android:layout_width="match_parent"
@@ -94,7 +94,7 @@ A:初次定位显示反应较慢，需要等待。保持网络状况良好和GPS
 				android:layout_marginRight="15dp"
 				android:layout_marginTop="5dp"
 				app:cardCornerRadius="4dp"
-				app:cardBackgroundColor="#fde2aa">
+				app:cardBackgroundColor="#FFF">
 				<TextView android:text="Q2:你们是使用什么传感器检测？
 A:我们使用的是手机内置的加速的传感器。"
 					android:layout_width="match_parent"
@@ -110,7 +110,7 @@ A:我们使用的是手机内置的加速的传感器。"
 				android:layout_marginRight="15dp"
 				android:layout_marginTop="5dp"
 				app:cardCornerRadius="4dp"
-				app:cardBackgroundColor="#f6d76d">
+				app:cardBackgroundColor="#FFF">
 				<TextView android:text="Q3:什么是群智感知？
 A:群智感知系统作为物联网的新兴技术，利用智能设备作为基本感知单元，通过移动互联网进行一系列的协作，实现感知任务分发与感知数据收集，完成大规模的、复杂的道路状况检测任务。
 基于这种用户无意识群智感知下的城市路况信息采集系统，尤其是相比交管部门部署的智能交通设备来说，我们无需安排专业的人员进行操作，极大的节省了路政部门的工作难度以及工作总量，同时可以提高道路修复的时效性。
