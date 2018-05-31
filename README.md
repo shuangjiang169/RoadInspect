@@ -3,8 +3,8 @@
 
 添加了一些辅助功能：定位显示，说明书，注册登录界面;
 
-新手任务,只会拼拼轮子；
+新手任务,只会拼拼轮子;
 
-![image](https://github.com/shuangjiang169/RoadInspect/blob/master/app/src/main/res/drawable/showpicture/Screenshot1.png）
+![image](https://github.com/shuangjiang169/RoadInspect/blob/master/app/src/main/res/drawable/showpicture/Screenshot1.png?raw=true）;
 
-![image](https://github.com/shuangjiang169/RoadInspect/blob/master/app/src/main/res/drawable/showpicture/Screenshot2.png）
+![image](https://github.com/shuangjiang169/RoadInspect/blob/master/app/src/main/res/drawable/showpicture/Screenshot2.png?raw=true）;
