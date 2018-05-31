@@ -5,5 +5,5 @@
 
 新手任务,只会拼拼轮子；
 
-![image](https://github.com/shuangjiang169/RoadInspect/blob/master/app/src/main/res/drawable/showpicture/Screenshot1.png?raw=true）
-![image](https://github.com/shuangjiang169/RoadInspect/blob/master/app/src/main/res/drawable/showpicture/Screenshot2.png?raw=true）
+![image](https://github.com/shuangjiang169/RoadInspect/blob/master/app/src/main/res/drawable/showpicture/Screenshot1.png）
+![image](https://github.com/shuangjiang169/RoadInspect/blob/master/app/src/main/res/drawable/showpicture/Screenshot2.png）
