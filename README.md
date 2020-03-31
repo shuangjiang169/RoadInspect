@@ -7,17 +7,15 @@
 
 
 ## 登录、注册界面
-![Image text](https://github.com/shuangjiang169/RoadInspect/blob/master/showpicture/Screenshot_2018-05-18-09-35-44.png)
+![sign in](https://github.com/shuangjiang169/RoadInspect/blob/master/showpicture/Screenshot_2018-05-18-09-35-44.png)
 
 
 ## 颠簸检测界面
 >对于路面坑槽与非坑槽事件的检测采用加速度计三轴数据之间的数据处理，选取表征加速度计三轴数据变化总量的标准差特征与平均值特征作为 k 均值聚类算法的数据输入。
 
+！[Image text](https://github.com/shuangjiang169/RoadInspect/blob/master/showpicture/Screenshot1.png）
 
-![Image text](https://github.com/shuangjiang169/RoadInspect/blob/master/showpicture/Screenshot1.png）
-![Image text](https://github.com/shuangjiang169/RoadInspect/blob/master/showpicture/Screenshot2.png）
-
-
+![image text](https://github.com/shuangjiang169/RoadInspect/blob/master/showpicture/Screenshot2.png）
 
 
 
